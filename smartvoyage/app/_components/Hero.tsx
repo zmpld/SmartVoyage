@@ -36,7 +36,7 @@ function Hero() {
           <span className="text-primary">Trip Planner</span>
         </h1>
         <p className="text-lg">
-          Tell me what you want, I'll handle the rest: Flights, Hotels, trip
+          Tell me what you want, and I'll handle the rest: Flights, Hotels, trip
           Planner - all in seconds
         </p>
         {/* Input Box */}
@@ -66,7 +66,7 @@ function Hero() {
 
         <div className="flex items-center justify-center flex-col">
           <h2 className="my-7 mt-14 flex gap-2 text-center">
-            Note Sure Where to Start? <strong>See how it works</strong>{" "}
+            Not Sure Where to Start? <strong>See how it works</strong>{" "}
             <ArrowDown />{" "}
           </h2>
 
