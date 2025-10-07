@@ -28,7 +28,7 @@ function Hero() {
   return (
     <div className="mt-24 w-full flex justify-center">
       {/* Content */}
-      <div className="max-w-3xl w-full text-center space-y-6">
+      <div className="max-w-3xl w-full text-center space-y-6"> 
         <h1 className="text-xl md:text-5xl font-bold">
           Hey, ako to si <span className="text-primary">Jinggoy</span>
         </h1>
@@ -60,8 +60,19 @@ function Hero() {
             </div>
           ))}
         </div>
+         
+            <div className='flex item-center justify-center flex-col>
+        <h2> className='my-7 mt=14 flex gap-2 text-center' Not sure when to start?  <strong> See how it works</strong> <ArrowDown/> </h2>
 
         {/* Video Section */}
+        <HeroVideoDialog
+          className="block dark:hidden"
+          animationStyle="from-center"
+          videoSrc="https://www.example.com/dummy-video"
+          tumbnailSrc="http://www.example.com/dummy-thumbnail.png"
+          thumbnailAlt="Dummy Video Thumbnail"
+          />
+        </div>
       </div>
     </div>
   );
