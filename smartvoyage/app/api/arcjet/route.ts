@@ -9,7 +9,7 @@ const aj = arcjet({
       mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
       characteristics: ["userId"], // track requests by a custom user ID
       refillRate: 5, // refill 5 tokens per interval
-      interval: 86400, // refill every 10 seconds
+      interval: 86400, // refill every 24 hrs 
       capacity: 10, // bucket maximum capacity of 10 tokens
     }),
   ],
