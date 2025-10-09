@@ -1,13 +1,41 @@
 'use client'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import axios from 'axios'
 import { Send } from 'lucide-react'
-import React from 'react'
+import React, { useState } from 'react'
+
+type Message={
+    role:string,
+    content:string
+}
 
 function ChatBox() {
 
-    const onSend = () =>{
+    const[messages,setMessages]=useState<Message[]>([]);
+    const[userInput,setUserInput]=useState<string>();
 
+    const onSend = async() =>{
+
+        if(!userInput?.trim()) return;
+
+        setUserInput('');
+        const newMsg:Message={
+            role:'user',
+            content:userInput
+        }
+
+        setMessages((prev:Message[])=>[...prev,newMsg]);
+
+        const result=await axios.post('/api/aimodel',{
+            messages:[...messages,newMsg]
+        });
+
+        setMessages((prev:Message[])=>[...prev,{
+            role:'assistant',
+            content:result?.data?.resp
+        }])
+        console.log(result.data);
     }
 
   return (
@@ -31,6 +59,8 @@ function ChatBox() {
             <Textarea
               placeholder="Create a trip for Japan from Philippines"
               className="w-full h-28 bg-transparent border-none focus-visible:ring-0 shadow-none resize-none"
+              onChange={(event)=>setUserInput(event.target.value??'')}
+              value={userInput}
             />
             <Button
               size={"icon"}
