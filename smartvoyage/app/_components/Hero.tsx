@@ -10,7 +10,7 @@ import { HeroVideoDialog } from "@/components/ui/hero-video-dialog";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 
-const suggestions = [
+export const suggestions = [
   {
     title: "Create New Trip",
     icon: <Globe2 className="text-blue-400 h-5 w-5" />,
@@ -38,7 +38,7 @@ function Hero() {
       return;
     }
     //Navigate to Create trip planner web screen
-    router.push('/create-new-trip')
+    router.push("/create-new-trip");
   };
 
   return (
@@ -65,7 +65,7 @@ function Hero() {
               className="absolute bottom-6 right-6"
               onClick={() => onSend()}
             >
-              <Send className="h-4 h-4" />
+              <Send className="h-4 w-4" />
             </Button>
           </div>
         </div>
