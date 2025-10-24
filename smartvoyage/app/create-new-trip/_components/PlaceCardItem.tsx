@@ -1,17 +1,35 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import Image from "next/image";
 import { Clock, ExternalLink, Link, Ticket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Activity } from './ChatBox';
+import axios from 'axios';
 
 type Props = {
     activity: Activity;
 }
 
 function PlaceCardItem({activity}: Props) {
+    const [PhotoRefUrl,setPhotoUrl]=useState<string>();
+    useEffect(()=>{
+      activity&&GetGooglePlaceDetail();
+    },[activity])
+  
+  
+    const GetGooglePlaceDetail=async()=>{
+      const result = await axios.post('/api/google-place-detail',{
+        placeName:activity?.place_name+":"+activity?.place_address
+      });
+      if(result?.data?.e){
+        return;
+      }
+      setPhotoUrl(result?.data)
+    }
+
   return (
     <div>
-                        <Image src={'/placeholder.jpg'} width={400} height={200} alt={activity.place_name} 
+                        <Image src={PhotoRefUrl?PhotoRefUrl:'/placeholder.jpg'} width={400} height={200} alt={activity.place_name} 
                         className='object-cover rounded-xl'
                         />
                         <h2 className='font-semibold text-lg'>{activity?.place_name}</h2>
